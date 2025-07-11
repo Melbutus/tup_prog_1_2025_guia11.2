@@ -31,26 +31,28 @@
             tbx_numero_ingresado_procesar_nro = new TextBox();
             tbx_valor_buscado_ = new TextBox();
             gb_procesar_numero = new GroupBox();
+            bt_registrar_numero_procesar_ = new Button();
             lbl_ingresar_numero = new Label();
             gbx_procesar_max_min = new GroupBox();
-            lbl_valor_maximo_procesar_nro = new Label();
-            lbl_valor_minimo_procesar_nro = new Label();
+            lbl_minimo_ = new ListBox();
             bt_actualizar_procesar_maxmin = new Button();
             lbx_maximo_ = new ListBox();
-            lbl_minimo_ = new ListBox();
+            lbl_valor_minimo_procesar_nro = new Label();
+            lbl_valor_maximo_procesar_nro = new Label();
             gbx_procesar_promedio = new GroupBox();
-            lbl_promedio = new Label();
-            lbx_promedio_ = new ListBox();
             bt_promedio_actualizar = new Button();
+            lbx_promedio_ = new ListBox();
+            lbl_promedio = new Label();
             gbx_mostrar_cantidad_ingresados = new GroupBox();
-            lbl_cantidad_ingresados_ = new Label();
-            lbx_cantidad_ingresados__ = new ListBox();
             bt_cant_ingresados_actualizar = new Button();
+            lbx_cantidad_ingresados__ = new ListBox();
+            lbl_cantidad_ingresados_ = new Label();
             gbx_valores = new GroupBox();
-            lbl_valor_a_buscar = new Label();
-            bt_buscar_valor_ = new Button();
             lbx_valor_a_buscar_ = new ListBox();
+            bt_buscar_valor_ = new Button();
+            lbl_valor_a_buscar = new Label();
             gbx_mostrar_ingresados_cant = new GroupBox();
+            lbx_cant_ingresados_lista = new ListBox();
             bt_mostrar_lista_ordenada_ = new Button();
             bt_lista_superioral_promedio = new Button();
             gb_procesar_numero.SuspendLayout();
@@ -58,14 +60,16 @@
             gbx_procesar_promedio.SuspendLayout();
             gbx_mostrar_cantidad_ingresados.SuspendLayout();
             gbx_valores.SuspendLayout();
+            gbx_mostrar_ingresados_cant.SuspendLayout();
             SuspendLayout();
             // 
             // tbx_numero_ingresado_procesar_nro
             // 
-            tbx_numero_ingresado_procesar_nro.Location = new Point(134, 43);
+            tbx_numero_ingresado_procesar_nro.Location = new Point(15, 61);
             tbx_numero_ingresado_procesar_nro.Name = "tbx_numero_ingresado_procesar_nro";
             tbx_numero_ingresado_procesar_nro.Size = new Size(100, 23);
             tbx_numero_ingresado_procesar_nro.TabIndex = 0;
+            tbx_numero_ingresado_procesar_nro.TextChanged += tbx_numero_ingresado_procesar_nro_TextChanged;
             // 
             // tbx_valor_buscado_
             // 
@@ -73,9 +77,11 @@
             tbx_valor_buscado_.Name = "tbx_valor_buscado_";
             tbx_valor_buscado_.Size = new Size(80, 23);
             tbx_valor_buscado_.TabIndex = 1;
+            tbx_valor_buscado_.TextChanged += tbx_valor_buscado__TextChanged;
             // 
             // gb_procesar_numero
             // 
+            gb_procesar_numero.Controls.Add(bt_registrar_numero_procesar_);
             gb_procesar_numero.Controls.Add(lbl_ingresar_numero);
             gb_procesar_numero.Controls.Add(tbx_numero_ingresado_procesar_nro);
             gb_procesar_numero.Location = new Point(7, 12);
@@ -86,10 +92,21 @@
             gb_procesar_numero.Text = "Procesar un Número";
             gb_procesar_numero.Enter += groupBox1_Enter;
             // 
+            // bt_registrar_numero_procesar_
+            // 
+            bt_registrar_numero_procesar_.DialogResult = DialogResult.OK;
+            bt_registrar_numero_procesar_.Location = new Point(147, 60);
+            bt_registrar_numero_procesar_.Name = "bt_registrar_numero_procesar_";
+            bt_registrar_numero_procesar_.Size = new Size(89, 23);
+            bt_registrar_numero_procesar_.TabIndex = 10;
+            bt_registrar_numero_procesar_.Text = "Registrar";
+            bt_registrar_numero_procesar_.UseVisualStyleBackColor = true;
+            bt_registrar_numero_procesar_.Click += bt_registrar_numero_procesar__Click;
+            // 
             // lbl_ingresar_numero
             // 
             lbl_ingresar_numero.AutoSize = true;
-            lbl_ingresar_numero.Location = new Point(0, 43);
+            lbl_ingresar_numero.Location = new Point(6, 29);
             lbl_ingresar_numero.Name = "lbl_ingresar_numero";
             lbl_ingresar_numero.Size = new Size(109, 15);
             lbl_ingresar_numero.TabIndex = 3;
@@ -109,32 +126,27 @@
             gbx_procesar_max_min.TabStop = false;
             gbx_procesar_max_min.Text = "Procesar Máximo y Mínimo";
             // 
-            // lbl_valor_maximo_procesar_nro
+            // lbl_minimo_
             // 
-            lbl_valor_maximo_procesar_nro.AutoSize = true;
-            lbl_valor_maximo_procesar_nro.Location = new Point(18, 33);
-            lbl_valor_maximo_procesar_nro.Name = "lbl_valor_maximo_procesar_nro";
-            lbl_valor_maximo_procesar_nro.Size = new Size(80, 15);
-            lbl_valor_maximo_procesar_nro.TabIndex = 4;
-            lbl_valor_maximo_procesar_nro.Text = "Valor Máximo";
-            // 
-            // lbl_valor_minimo_procesar_nro
-            // 
-            lbl_valor_minimo_procesar_nro.AutoSize = true;
-            lbl_valor_minimo_procesar_nro.Location = new Point(18, 72);
-            lbl_valor_minimo_procesar_nro.Name = "lbl_valor_minimo_procesar_nro";
-            lbl_valor_minimo_procesar_nro.Size = new Size(78, 15);
-            lbl_valor_minimo_procesar_nro.TabIndex = 5;
-            lbl_valor_minimo_procesar_nro.Text = "Valor Mínimo";
+            lbl_minimo_.BackColor = SystemColors.ActiveCaption;
+            lbl_minimo_.FormattingEnabled = true;
+            lbl_minimo_.ItemHeight = 15;
+            lbl_minimo_.Location = new Point(115, 68);
+            lbl_minimo_.Name = "lbl_minimo_";
+            lbl_minimo_.Size = new Size(69, 19);
+            lbl_minimo_.TabIndex = 5;
+            lbl_minimo_.SelectedIndexChanged += lbl_minimo__SelectedIndexChanged;
             // 
             // bt_actualizar_procesar_maxmin
             // 
+            bt_actualizar_procesar_maxmin.DialogResult = DialogResult.OK;
             bt_actualizar_procesar_maxmin.Location = new Point(208, 49);
             bt_actualizar_procesar_maxmin.Name = "bt_actualizar_procesar_maxmin";
             bt_actualizar_procesar_maxmin.Size = new Size(75, 23);
             bt_actualizar_procesar_maxmin.TabIndex = 4;
             bt_actualizar_procesar_maxmin.Text = "Actualizar";
             bt_actualizar_procesar_maxmin.UseVisualStyleBackColor = true;
+            bt_actualizar_procesar_maxmin.Click += bt_actualizar_procesar_maxmin_Click;
             // 
             // lbx_maximo_
             // 
@@ -145,16 +157,25 @@
             lbx_maximo_.Name = "lbx_maximo_";
             lbx_maximo_.Size = new Size(69, 19);
             lbx_maximo_.TabIndex = 4;
+            lbx_maximo_.SelectedIndexChanged += lbx_maximo__SelectedIndexChanged;
             // 
-            // lbl_minimo_
+            // lbl_valor_minimo_procesar_nro
             // 
-            lbl_minimo_.BackColor = SystemColors.ActiveCaption;
-            lbl_minimo_.FormattingEnabled = true;
-            lbl_minimo_.ItemHeight = 15;
-            lbl_minimo_.Location = new Point(115, 68);
-            lbl_minimo_.Name = "lbl_minimo_";
-            lbl_minimo_.Size = new Size(69, 19);
-            lbl_minimo_.TabIndex = 5;
+            lbl_valor_minimo_procesar_nro.AutoSize = true;
+            lbl_valor_minimo_procesar_nro.Location = new Point(18, 72);
+            lbl_valor_minimo_procesar_nro.Name = "lbl_valor_minimo_procesar_nro";
+            lbl_valor_minimo_procesar_nro.Size = new Size(78, 15);
+            lbl_valor_minimo_procesar_nro.TabIndex = 5;
+            lbl_valor_minimo_procesar_nro.Text = "Valor Mínimo";
+            // 
+            // lbl_valor_maximo_procesar_nro
+            // 
+            lbl_valor_maximo_procesar_nro.AutoSize = true;
+            lbl_valor_maximo_procesar_nro.Location = new Point(18, 33);
+            lbl_valor_maximo_procesar_nro.Name = "lbl_valor_maximo_procesar_nro";
+            lbl_valor_maximo_procesar_nro.Size = new Size(80, 15);
+            lbl_valor_maximo_procesar_nro.TabIndex = 4;
+            lbl_valor_maximo_procesar_nro.Text = "Valor Máximo";
             // 
             // gbx_procesar_promedio
             // 
@@ -168,14 +189,16 @@
             gbx_procesar_promedio.TabStop = false;
             gbx_procesar_promedio.Text = "Procesar Promedio";
             // 
-            // lbl_promedio
+            // bt_promedio_actualizar
             // 
-            lbl_promedio.AutoSize = true;
-            lbl_promedio.Location = new Point(18, 30);
-            lbl_promedio.Name = "lbl_promedio";
-            lbl_promedio.Size = new Size(59, 15);
-            lbl_promedio.TabIndex = 5;
-            lbl_promedio.Text = "Promedio";
+            bt_promedio_actualizar.DialogResult = DialogResult.OK;
+            bt_promedio_actualizar.Location = new Point(208, 22);
+            bt_promedio_actualizar.Name = "bt_promedio_actualizar";
+            bt_promedio_actualizar.Size = new Size(75, 23);
+            bt_promedio_actualizar.TabIndex = 5;
+            bt_promedio_actualizar.Text = "Actualizar";
+            bt_promedio_actualizar.UseVisualStyleBackColor = true;
+            bt_promedio_actualizar.Click += bt_promedio_actualizar_Click;
             // 
             // lbx_promedio_
             // 
@@ -187,14 +210,14 @@
             lbx_promedio_.Size = new Size(69, 19);
             lbx_promedio_.TabIndex = 5;
             // 
-            // bt_promedio_actualizar
+            // lbl_promedio
             // 
-            bt_promedio_actualizar.Location = new Point(208, 22);
-            bt_promedio_actualizar.Name = "bt_promedio_actualizar";
-            bt_promedio_actualizar.Size = new Size(75, 23);
-            bt_promedio_actualizar.TabIndex = 5;
-            bt_promedio_actualizar.Text = "Actualizar";
-            bt_promedio_actualizar.UseVisualStyleBackColor = true;
+            lbl_promedio.AutoSize = true;
+            lbl_promedio.Location = new Point(18, 30);
+            lbl_promedio.Name = "lbl_promedio";
+            lbl_promedio.Size = new Size(59, 15);
+            lbl_promedio.TabIndex = 5;
+            lbl_promedio.Text = "Promedio";
             // 
             // gbx_mostrar_cantidad_ingresados
             // 
@@ -208,14 +231,16 @@
             gbx_mostrar_cantidad_ingresados.TabStop = false;
             gbx_mostrar_cantidad_ingresados.Text = "Mostrar cantidad de Ingresados";
             // 
-            // lbl_cantidad_ingresados_
+            // bt_cant_ingresados_actualizar
             // 
-            lbl_cantidad_ingresados_.AutoSize = true;
-            lbl_cantidad_ingresados_.Location = new Point(22, 28);
-            lbl_cantidad_ingresados_.Name = "lbl_cantidad_ingresados_";
-            lbl_cantidad_ingresados_.Size = new Size(55, 15);
-            lbl_cantidad_ingresados_.TabIndex = 6;
-            lbl_cantidad_ingresados_.Text = "Cantidad";
+            bt_cant_ingresados_actualizar.DialogResult = DialogResult.OK;
+            bt_cant_ingresados_actualizar.Location = new Point(208, 28);
+            bt_cant_ingresados_actualizar.Name = "bt_cant_ingresados_actualizar";
+            bt_cant_ingresados_actualizar.Size = new Size(75, 23);
+            bt_cant_ingresados_actualizar.TabIndex = 6;
+            bt_cant_ingresados_actualizar.Text = "Actualizar";
+            bt_cant_ingresados_actualizar.UseVisualStyleBackColor = true;
+            bt_cant_ingresados_actualizar.Click += bt_cant_ingresados_actualizar_Click;
             // 
             // lbx_cantidad_ingresados__
             // 
@@ -227,14 +252,14 @@
             lbx_cantidad_ingresados__.Size = new Size(69, 19);
             lbx_cantidad_ingresados__.TabIndex = 6;
             // 
-            // bt_cant_ingresados_actualizar
+            // lbl_cantidad_ingresados_
             // 
-            bt_cant_ingresados_actualizar.Location = new Point(208, 28);
-            bt_cant_ingresados_actualizar.Name = "bt_cant_ingresados_actualizar";
-            bt_cant_ingresados_actualizar.Size = new Size(75, 23);
-            bt_cant_ingresados_actualizar.TabIndex = 6;
-            bt_cant_ingresados_actualizar.Text = "Actualizar";
-            bt_cant_ingresados_actualizar.UseVisualStyleBackColor = true;
+            lbl_cantidad_ingresados_.AutoSize = true;
+            lbl_cantidad_ingresados_.Location = new Point(22, 28);
+            lbl_cantidad_ingresados_.Name = "lbl_cantidad_ingresados_";
+            lbl_cantidad_ingresados_.Size = new Size(55, 15);
+            lbl_cantidad_ingresados_.TabIndex = 6;
+            lbl_cantidad_ingresados_.Text = "Cantidad";
             // 
             // gbx_valores
             // 
@@ -249,6 +274,27 @@
             gbx_valores.TabStop = false;
             gbx_valores.Text = "Valores";
             // 
+            // lbx_valor_a_buscar_
+            // 
+            lbx_valor_a_buscar_.BackColor = SystemColors.ActiveCaption;
+            lbx_valor_a_buscar_.FormattingEnabled = true;
+            lbx_valor_a_buscar_.ItemHeight = 15;
+            lbx_valor_a_buscar_.Location = new Point(6, 75);
+            lbx_valor_a_buscar_.Name = "lbx_valor_a_buscar_";
+            lbx_valor_a_buscar_.Size = new Size(193, 19);
+            lbx_valor_a_buscar_.TabIndex = 9;
+            // 
+            // bt_buscar_valor_
+            // 
+            bt_buscar_valor_.DialogResult = DialogResult.OK;
+            bt_buscar_valor_.Location = new Point(103, 47);
+            bt_buscar_valor_.Name = "bt_buscar_valor_";
+            bt_buscar_valor_.Size = new Size(75, 23);
+            bt_buscar_valor_.TabIndex = 8;
+            bt_buscar_valor_.Text = "Buscar";
+            bt_buscar_valor_.UseVisualStyleBackColor = true;
+            bt_buscar_valor_.Click += bt_buscar_valor__Click;
+            // 
             // lbl_valor_a_buscar
             // 
             lbl_valor_a_buscar.AutoSize = true;
@@ -258,51 +304,46 @@
             lbl_valor_a_buscar.TabIndex = 7;
             lbl_valor_a_buscar.Text = "Valor a Buscar";
             // 
-            // bt_buscar_valor_
-            // 
-            bt_buscar_valor_.Location = new Point(103, 47);
-            bt_buscar_valor_.Name = "bt_buscar_valor_";
-            bt_buscar_valor_.Size = new Size(75, 23);
-            bt_buscar_valor_.TabIndex = 8;
-            bt_buscar_valor_.Text = "Buscar";
-            bt_buscar_valor_.UseVisualStyleBackColor = true;
-            // 
-            // lbx_valor_a_buscar_
-            // 
-            lbx_valor_a_buscar_.BackColor = SystemColors.ActiveCaption;
-            lbx_valor_a_buscar_.FormattingEnabled = true;
-            lbx_valor_a_buscar_.ItemHeight = 15;
-            lbx_valor_a_buscar_.Location = new Point(6, 75);
-            lbx_valor_a_buscar_.Name = "lbx_valor_a_buscar_";
-            lbx_valor_a_buscar_.Size = new Size(80, 19);
-            lbx_valor_a_buscar_.TabIndex = 9;
-            // 
             // gbx_mostrar_ingresados_cant
             // 
+            gbx_mostrar_ingresados_cant.Controls.Add(lbx_cant_ingresados_lista);
             gbx_mostrar_ingresados_cant.Location = new Point(357, 130);
             gbx_mostrar_ingresados_cant.Name = "gbx_mostrar_ingresados_cant";
-            gbx_mostrar_ingresados_cant.Size = new Size(188, 214);
+            gbx_mostrar_ingresados_cant.Size = new Size(199, 214);
             gbx_mostrar_ingresados_cant.TabIndex = 7;
             gbx_mostrar_ingresados_cant.TabStop = false;
             gbx_mostrar_ingresados_cant.Text = "Mostrar Cantidad de Ingresados";
             // 
+            // lbx_cant_ingresados_lista
+            // 
+            lbx_cant_ingresados_lista.FormattingEnabled = true;
+            lbx_cant_ingresados_lista.ItemHeight = 15;
+            lbx_cant_ingresados_lista.Location = new Point(17, 55);
+            lbx_cant_ingresados_lista.Name = "lbx_cant_ingresados_lista";
+            lbx_cant_ingresados_lista.Size = new Size(120, 154);
+            lbx_cant_ingresados_lista.TabIndex = 0;
+            // 
             // bt_mostrar_lista_ordenada_
             // 
-            bt_mostrar_lista_ordenada_.Location = new Point(562, 151);
+            bt_mostrar_lista_ordenada_.DialogResult = DialogResult.OK;
+            bt_mostrar_lista_ordenada_.Location = new Point(573, 151);
             bt_mostrar_lista_ordenada_.Name = "bt_mostrar_lista_ordenada_";
             bt_mostrar_lista_ordenada_.Size = new Size(75, 62);
             bt_mostrar_lista_ordenada_.TabIndex = 8;
             bt_mostrar_lista_ordenada_.Text = "Mostrar Lista Ordenada";
             bt_mostrar_lista_ordenada_.UseVisualStyleBackColor = true;
+            bt_mostrar_lista_ordenada_.Click += bt_mostrar_lista_ordenada__Click;
             // 
             // bt_lista_superioral_promedio
             // 
-            bt_lista_superioral_promedio.Location = new Point(562, 233);
+            bt_lista_superioral_promedio.DialogResult = DialogResult.OK;
+            bt_lista_superioral_promedio.Location = new Point(573, 233);
             bt_lista_superioral_promedio.Name = "bt_lista_superioral_promedio";
             bt_lista_superioral_promedio.Size = new Size(75, 80);
             bt_lista_superioral_promedio.TabIndex = 9;
             bt_lista_superioral_promedio.Text = "Mostrar Lista Superior al Promedio";
             bt_lista_superioral_promedio.UseVisualStyleBackColor = true;
+            bt_lista_superioral_promedio.Click += bt_lista_superioral_promedio_Click;
             // 
             // Form1
             // 
@@ -311,12 +352,12 @@
             ClientSize = new Size(671, 382);
             Controls.Add(bt_lista_superioral_promedio);
             Controls.Add(bt_mostrar_lista_ordenada_);
-            Controls.Add(gbx_mostrar_ingresados_cant);
             Controls.Add(gbx_valores);
             Controls.Add(gbx_mostrar_cantidad_ingresados);
             Controls.Add(gbx_procesar_promedio);
             Controls.Add(gbx_procesar_max_min);
             Controls.Add(gb_procesar_numero);
+            Controls.Add(gbx_mostrar_ingresados_cant);
             Name = "Form1";
             Text = "Form1";
             gb_procesar_numero.ResumeLayout(false);
@@ -329,6 +370,7 @@
             gbx_mostrar_cantidad_ingresados.PerformLayout();
             gbx_valores.ResumeLayout(false);
             gbx_valores.PerformLayout();
+            gbx_mostrar_ingresados_cant.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -359,5 +401,7 @@
         private GroupBox gbx_mostrar_ingresados_cant;
         private Button bt_mostrar_lista_ordenada_;
         private Button bt_lista_superioral_promedio;
+        private ListBox lbx_cant_ingresados_lista;
+        private Button bt_registrar_numero_procesar_;
     }
 }

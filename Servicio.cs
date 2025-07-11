@@ -8,8 +8,8 @@ namespace _11_2_1_vectores
 {
     internal class Servicio
     {
-        int[] lista = new int[10];
-        int contador;
+        public int[] lista = new int[10];
+        public int contador;
 
         public Servicio()
         {
@@ -18,13 +18,13 @@ namespace _11_2_1_vectores
 
         public void RegistrarValor(int valor)
         {
-            if (contador < lista.Length)
-            {
-                lista[contador] = valor;
-                contador++;
-            }
+            
+            lista[contador] = valor;
+            contador++;
+            
         }
 
+        
         public double CalcularPromedio()
         {
             double Promedio = 0;
@@ -52,7 +52,7 @@ namespace _11_2_1_vectores
         public double CalcularMinimo()
         {
             double minimo = lista[0];
-            for (int i = 0; i < contador; i++)
+            for (int i = 0; i < lista[contador]; i++)
             {
                 if (lista[i] < minimo)
                 {
@@ -64,9 +64,9 @@ namespace _11_2_1_vectores
 
         public void OrdenarLista()
         {
-            for (int i = 0; i < contador - 1; i++)
+            for (int i = 0; i < lista[contador] - 1; i++)
             {
-                for (int j = i + 1; j < contador; j++)
+                for (int j = i + 1; j < lista[contador]; j++)
                 {
                     if (lista[i] > lista[j])
                     {
@@ -103,12 +103,10 @@ namespace _11_2_1_vectores
         {
             double promedio = CalcularPromedio();
             contadorSuperiores = 0;
-            int[] superiores = new int[contador];
+            int[] superiores = new int[contador]; // arreglo con el tamaño máximo
 
-            //double Promedio = 0;
             for (int i = 0; i < contador; i++)
             {
-                // Promedio += lista[i];
                 if (lista[i] > promedio)
                 {
                     superiores[contadorSuperiores] = lista[i];
@@ -116,7 +114,15 @@ namespace _11_2_1_vectores
                 }
             }
 
-            return superiores;
+            // Ahora un arreglo final con el tamaño exacto
+            int[] resultadoFinal = new int[contadorSuperiores];
+
+            for (int i = 0; i < contadorSuperiores; i++)
+            {
+                resultadoFinal[i] = superiores[i];
+            }
+
+            return resultadoFinal;
         }
     }
 }
